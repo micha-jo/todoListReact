@@ -1,22 +1,26 @@
 //function getTodos(user.uid)
 
-import { doc, getDocs, collection, getDoc, query, where} from "firebase/firestore"; 
+import { doc, getDocs, collection, getDoc, query, where } from "firebase/firestore";
 import { db, todoCol } from "../firebase";
 
-const getAll = async (colonne) =>{
-  const querySnapshot = await getDocs(collection(db, colonne));
+const getAllLists = async (colonne, userId) => {
+  const q = query(collection(db, colonne), where("users", "array-contains-any", [userId]));
+  const querySnapshot = await getDocs(q);
+  const results = [];
   querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data().text}`);
+    const list = { ...doc.data(), id: doc.id };
+    results.push(list);
   });
-}
+  return results;
+};
 
-const getTodoTask = async (todoId)=>{
+const getTodoTask = async (todoId) => {
   const q = query(collection(db, 'task'), where('todo', "==", todoId));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     console.log(doc.id, doc.data());
-  }); 
-}
+  });
+};
 
 const getById = async (id, colonne) => {
   const docRef = doc(db, colonne, id);
@@ -28,10 +32,10 @@ const getById = async (id, colonne) => {
     // docSnap.data() will be undefined in this case
     console.log("No such document!");
   }
-}
+};
 
 
 
-export  {getAll, getTodoTask, getById}
+export { getAllLists, getTodoTask, getById }
 
 

@@ -14,10 +14,13 @@ import TodoCard from "../components/TodoCard";
 import AddIcon from "@mui/icons-material/Add";
 import { useContext } from "react";
 import { authContext } from "../components/Auth";
+import add from "./../functions/add";
+import { getAllLists } from "../functions/get";
 
 export default function DisplayListPage() {
   const [lists, setLists] = useState([]);
   const [openInput, setOpenInput] = useState(false);
+  const [newList, setNewList] = useState("");
   const user = useContext(authContext);
 
   const listsData = [
@@ -28,21 +31,29 @@ export default function DisplayListPage() {
     },
   ];
 
-  // getTodos qui renvoit une liste de todos qu'on enregistre dans un state
   useEffect(() => {
-    // getLists
-    setLists(listsData);
+    getAllLists("todo", user.uid).then((data) => {
+      setLists(data);
+    });
   }, []);
 
   function handleOpenInput() {
     setOpenInput(!openInput);
   }
 
+  function handleInputChange(e) {
+    setNewList(e.target.value);
+  }
+
   function createNewTodolist(e) {
-    // // addTodo ({
-    //   title: ""
-    //   users: []
-    // }
+    const newTodo = {
+      title: newList,
+      users: [user.uid],
+    };
+    add(newTodo, "todo").then((data) => {
+      const updateList = { ...newTodo, id: data };
+      setLists([...lists, updateList]);
+    });
   }
 
   return (
@@ -53,19 +64,19 @@ export default function DisplayListPage() {
         </Grid>
       ))}
       <Grid item>
-        <Card onClick={handleOpenInput}>
+        <Card>
           <CardContent>
-            <Typography variant="h5" component="div">
+            <Typography variant="h5" component="div" onClick={handleOpenInput}>
               Créer une nouvelle liste
             </Typography>
           </CardContent>
           {openInput ? (
             <CardActions>
-              <AddIcon />
+              <AddIcon onClick={handleOpenInput} />
             </CardActions>
           ) : (
             <CardActions>
-              <Input />
+              <Input onChange={handleInputChange} value={newList} />
               <Button variant="contained" onClick={createNewTodolist}>
                 Créer
               </Button>
