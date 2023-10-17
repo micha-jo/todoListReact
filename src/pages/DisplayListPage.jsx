@@ -53,15 +53,15 @@ export default function DisplayListPage() {
         </Grid>
       ))}
       <Grid item>
-        <Card onClick={handleOpenInput}>
-          <CardContent>
+        <Card>
+          <CardContent onClick={handleOpenInput}>
             <Typography variant="h5" component="div">
               Créer une nouvelle liste
             </Typography>
           </CardContent>
           {openInput ? (
             <CardActions>
-              <AddIcon />
+              <AddIcon onClick={handleOpenInput} />
             </CardActions>
           ) : (
             <CardActions>
