@@ -13,7 +13,7 @@ const firebaseConfig = {
   projectId: "todo-list-711b5",
   storageBucket: "todo-list-711b5.appspot.com",
   messagingSenderId: "108712669247",
-  appId: "1:108712669247:web:5aa462b17f16805dd0088a"
+  appId: "1:108712669247:web:5aa462b17f16805dd0088a",
 };
 
 // Initialize Firebase
@@ -24,7 +24,6 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const tacheCol = collection(db, "task");
 export const todoCol = collection(db, "todo");
-
 
 //const db = getFirestore();
 
