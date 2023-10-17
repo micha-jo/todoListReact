@@ -14,7 +14,7 @@ export default function TodoPage() {
     // const todosData = [
     //   { id: "2", completed: false, text: "cuisiner", todo: "hello" },
     // ];
-    getTodoTask('DDW5fDqYvZicsvZZs3Kl').then(data=> setTodos(data))
+    getTodoTask(id).then(data=> setTodos(data))
     //setTodos([...todosData]);
   }, []);
 
