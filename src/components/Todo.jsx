@@ -21,7 +21,7 @@ export default function ToDo({ todo, setCompletion, deleteTodo }) {
           control={
             <Checkbox
               onClick={() => setCompletion(todo.id)}
-              checked={todo.completion}
+              checked={todo.completed}
               id={todo.id}
             />
           }
