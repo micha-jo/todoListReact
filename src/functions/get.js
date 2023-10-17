@@ -14,13 +14,18 @@ const getAllLists = async (colonne, userId) => {
   return results;
 };
 
-const getTodoTask = async (todoId) => {
+const getTodoTask = async (todoId)=>{
+  let data = []
   const q = query(collection(db, 'task'), where('todo', "==", todoId));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    console.log(doc.id, doc.data());
+    data=[...data, {
+      id: doc.id, 
+      ...doc.data()
+    }]
   });
-};
+  return data
+}
 
 const getById = async (id, colonne) => {
   const docRef = doc(db, colonne, id);

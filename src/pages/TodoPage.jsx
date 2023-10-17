@@ -4,17 +4,18 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DisplayTodos from "../components/DisplayTodos";
 import { Grid } from "@mui/material";
+import { getTodoTask } from "../functions/get";
 
 export default function TodoPage() {
   const [todos, setTodos] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
-    // getTodos(id)
-    const todosData = [
-      { id: "2", completed: false, text: "cuisiner", todo: "hello" },
-    ];
-    setTodos([...todosData]);
+    // const todosData = [
+    //   { id: "2", completed: false, text: "cuisiner", todo: "hello" },
+    // ];
+    getTodoTask('DDW5fDqYvZicsvZZs3Kl').then(data=> setTodos(data))
+    //setTodos([...todosData]);
   }, []);
 
   return (
