@@ -20,7 +20,7 @@ export default function LoginPage() {
       justifyContent="center"
       alignItems="center"
       spacing={4}
-      m={{ sx: 0, md: 2 }}
+      sx={{ marginTop: "20px" }}
     >
       <Grid item>
         <Typography component="h1" variant="h6">
