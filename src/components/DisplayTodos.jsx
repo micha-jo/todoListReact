@@ -15,7 +15,7 @@ export default function DisplayTodos({ todos, setTodos, type }) {
   function setCompletion(id) {
     const updatedTodos = todos.map((element) => {
       if (element.id === id) {
-        return { ...element, completion: !element.completion };
+        return { ...element, completed: !element.completed };
       } else {
         return element;
       }
@@ -26,6 +26,7 @@ export default function DisplayTodos({ todos, setTodos, type }) {
   return (
     <div>
       <Typography>{type === "todo" ? "A faire" : "Terminées"}</Typography>
+      {console.log(todos)}
       {type === "todo"
         ? todos.map(
             (todo) =>
