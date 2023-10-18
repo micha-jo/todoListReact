@@ -51,11 +51,10 @@ export default function DisplayListPage() {
   return (
     <Grid
       container
-      m={{ xs: 0, md: 6 }}
       spacing={2}
       justifyContent="center"
       alignItems="center"
-      sx={{ width: "100%" }}
+      sx={{ width: "100%", marginTop: "20px" }}
     >
       {lists.map((list) => (
         <Grid item key={list.id}>
