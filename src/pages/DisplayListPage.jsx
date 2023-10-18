@@ -23,14 +23,6 @@ export default function DisplayListPage() {
   const [newList, setNewList] = useState("");
   const user = useContext(authContext);
 
-  const listsData = [
-    {
-      id: "hello",
-      title: "Cuisine",
-      users: ["JpeZrzFrnFUl5kuAQXTC8zFlhRD3"],
-    },
-  ];
-
   useEffect(() => {
     getAllLists("todo", user.uid).then((data) => {
       setLists(data);
@@ -57,16 +49,38 @@ export default function DisplayListPage() {
   }
 
   return (
-    <Grid container m={6} spacing={2}>
+    <Grid
+      container
+      m={{ xs: 0, md: 6 }}
+      spacing={2}
+      justifyContent="center"
+      alignItems="center"
+      sx={{ width: "100%" }}
+    >
       {lists.map((list) => (
         <Grid item key={list.id}>
           <TodoCard list={list} />
         </Grid>
       ))}
       <Grid item>
-        <Card>
+        <Card
+          sx={{
+            xs: { width: "100px" },
+            width: "200px",
+            height: "200px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
           <CardContent>
-            <Typography variant="h5" component="div" onClick={handleOpenInput}>
+            <Typography
+              variant="h5"
+              component="div"
+              onClick={handleOpenInput}
+              sx={{ textAlign: "center" }}
+            >
               Créer une nouvelle liste
             </Typography>
           </CardContent>
@@ -75,9 +89,17 @@ export default function DisplayListPage() {
               <AddIcon onClick={handleOpenInput} />
             </CardActions>
           ) : (
-            <CardActions>
-              <Input onChange={handleInputChange} value={newList} />
-              <Button variant="contained" onClick={createNewTodolist}>
+            <CardActions sx={{ display: "flex", flexDirection: "column" }}>
+              <Input
+                onChange={handleInputChange}
+                value={newList}
+                sx={{ my: "10px" }}
+              />
+              <Button
+                variant="contained"
+                onClick={createNewTodolist}
+                sx={{ my: "10px" }}
+              >
                 Créer
               </Button>
             </CardActions>

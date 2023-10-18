@@ -1,10 +1,10 @@
 import React from "react";
 import Todo from "./Todo";
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import delTodo from "../functions/deleteTodo";
 import updateTask from "../functions/update";
 
-export default function DisplayTodos({ todos, setTodos, type }) {
+export default function DisplayTodos({ todos, setTodos, type, id }) {
   function deleteTodo(id) {
     delTodo(id);
     const updatedTodo = todos.filter((element) => element.id !== id);
@@ -25,7 +25,7 @@ export default function DisplayTodos({ todos, setTodos, type }) {
   }
 
   return (
-    <div>
+    <Container sx={{ xs: { width: "400px" }, md: { width: "400px" } }}>
       <Typography>{type === "todo" ? "A faire" : "Terminées"}</Typography>
       {console.log(todos)}
       {type === "todo"
@@ -51,6 +51,6 @@ export default function DisplayTodos({ todos, setTodos, type }) {
                 />
               )
           )}
-    </div>
+    </Container>
   );
 }

@@ -36,7 +36,8 @@ export default function AddToTodo({ setTodos, todos, listId }) {
       container
       mt={2}
       direction={{ xs: "column", sm: "row" }}
-      sx={{ justifyContent: "center" }}
+      justifyContent="center"
+      alignItems="center"
       spacing={4}
     >
       <Grid item xs={2}>
@@ -45,7 +46,7 @@ export default function AddToTodo({ setTodos, todos, listId }) {
           value={newTodo}
           onChange={onInputChange}
           onKeyDown={handleKeyDown}
-          sx={{ width: "100%s" }}
+          sx={{ xs: { width: "200px" } }}
         />
       </Grid>
       <Grid item xs={3}>

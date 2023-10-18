@@ -1,4 +1,5 @@
-import { Grid, Button, Input } from "@mui/material";
+import { Grid, Button, Input, InputAdornment } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
@@ -28,6 +29,12 @@ export default function Register() {
       });
   }
 
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      register(event);
+    }
+  }
+
   return (
     <Grid
       container
@@ -42,15 +49,16 @@ export default function Register() {
           type="text"
           onChange={handleEmail}
           value={email}
-          sx={{ border: "solid" }}
+          sx={{ border: "solid", width: "200px" }}
         />
       </Grid>
       <Grid item>
         <Input
-          type="text"
+          type="password"
           onChange={handlePass}
           value={pass}
-          sx={{ border: "solid" }}
+          sx={{ border: "solid", width: "200px" }}
+          onKeyDown={handleKeyDown}
         />
       </Grid>
       <Grid item>

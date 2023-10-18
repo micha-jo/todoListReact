@@ -19,11 +19,11 @@ export default function TodoPage() {
     <Grid
       container
       justifyContent="center"
-      spacing={2}
-      m={4}
+      spacing={5}
+      m={{ xs: 0, md: 4 }}
       direction="column"
     >
-      <Grid item>
+      <Grid item sx={{ xs: { width: "300px" } }}>
         <AddToTodo todos={todos} setTodos={setTodos} listId={id} />
       </Grid>
       <Grid container direction="row" justifyContent="center">

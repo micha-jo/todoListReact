@@ -27,6 +27,12 @@ export default function SingIn() {
       });
   }
 
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      signIn(event);
+    }
+  }
+
   return (
     <Grid
       container
@@ -41,15 +47,16 @@ export default function SingIn() {
           type="text"
           onChange={handleEmail}
           value={email}
-          sx={{ border: "solid" }}
+          sx={{ border: "solid", width: "200px" }}
         />
       </Grid>
       <Grid item>
         <Input
-          type="text"
+          type="password"
           onChange={handlePass}
           value={pass}
-          sx={{ border: "solid" }}
+          sx={{ border: "solid", width: "200px" }}
+          onKeyDown={handleKeyDown}
         />
       </Grid>
       <Grid item>

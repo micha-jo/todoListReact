@@ -9,7 +9,6 @@ export default function Auth({ children }) {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthent(user);
-        console.log(authent);
       } else {
         setAuthent(null);
       }
