@@ -9,7 +9,6 @@ export default function DisplayTodos({ todos, setTodos, type, id }) {
     delTodo(id);
     const updatedTodo = todos.filter((element) => element.id !== id);
     setTodos(updatedTodo);
-    console.log(updatedTodo);
   }
 
   function setCompletion(id) {
@@ -27,7 +26,6 @@ export default function DisplayTodos({ todos, setTodos, type, id }) {
   return (
     <Container sx={{ width: { xs: "300px", sm: "400px" } }}>
       <Typography>{type === "todo" ? "A faire" : "Terminées"}</Typography>
-      {console.log(todos)}
       {type === "todo"
         ? todos.map(
             (todo) =>
