@@ -2,11 +2,11 @@ import React from "react";
 import Todo from "./Todo";
 import { Typography } from "@mui/material";
 import delTodo from "../functions/deleteTodo";
+import updateTask from "../functions/update";
 
 export default function DisplayTodos({ todos, setTodos, type }) {
-
   function deleteTodo(id) {
-    delTodo(id)
+    delTodo(id);
     const updatedTodo = todos.filter((element) => element.id !== id);
     setTodos(updatedTodo);
     console.log(updatedTodo);
@@ -15,6 +15,7 @@ export default function DisplayTodos({ todos, setTodos, type }) {
   function setCompletion(id) {
     const updatedTodos = todos.map((element) => {
       if (element.id === id) {
+        updateTask("task", id, !element.completed);
         return { ...element, completed: !element.completed };
       } else {
         return element;
