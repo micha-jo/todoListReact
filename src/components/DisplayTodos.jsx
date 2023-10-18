@@ -25,7 +25,7 @@ export default function DisplayTodos({ todos, setTodos, type, id }) {
   }
 
   return (
-    <Container sx={{ xs: { width: "400px" }, md: { width: "400px" } }}>
+    <Container sx={{ width: { xs: "300px", sm: "400px" } }}>
       <Typography>{type === "todo" ? "A faire" : "Terminées"}</Typography>
       {console.log(todos)}
       {type === "todo"
