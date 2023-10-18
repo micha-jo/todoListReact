@@ -1,9 +1,12 @@
 import React from "react";
 import Todo from "./Todo";
 import { Typography } from "@mui/material";
+import delTodo from "../functions/deleteTodo";
 
 export default function DisplayTodos({ todos, setTodos, type }) {
+
   function deleteTodo(id) {
+    delTodo(id)
     const updatedTodo = todos.filter((element) => element.id !== id);
     setTodos(updatedTodo);
     console.log(updatedTodo);
