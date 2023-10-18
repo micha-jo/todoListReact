@@ -18,19 +18,24 @@ export default function TodoPage() {
   return (
     <Grid
       container
-      justifyContent="center"
       spacing={5}
       direction="column"
+      justifyContent="center"
       sx={{ marginTop: "20px" }}
     >
       <Grid item sx={{ xs: { width: "300px" } }}>
         <AddToTodo todos={todos} setTodos={setTodos} listId={id} />
       </Grid>
-      <Grid container direction="row" justifyContent="center">
-        <Grid item>
+      <Grid
+        container
+        direction={{ xs: "column", sm: "row" }}
+        justifyContent="center"
+        sx={{ marginTop: "20px", paddingLeft: { xs: "40px" } }}
+      >
+        <Grid item sx={{ marginTop: "20px" }}>
           <DisplayTodos todos={todos} setTodos={setTodos} type="todo" />
         </Grid>
-        <Grid item>
+        <Grid item sx={{ marginTop: "20px" }}>
           <DisplayTodos todos={todos} setTodos={setTodos} type="completed" />
         </Grid>
       </Grid>
