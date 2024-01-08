@@ -1,0 +1,6 @@
+- name: Installation du logiciel sur les serveurs
+  hosts: myhosts
+  become: true
+  tasks:
+    - name: Installation du logiciel
+      command: npm run build
